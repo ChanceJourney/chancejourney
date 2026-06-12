@@ -4,6 +4,7 @@ import "@workspace/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@workspace/ui/lib/utils"
 import { Metadata } from "next"
+import { SiteNav } from "@/components/site-nav"
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -52,7 +53,12 @@ export default function RootLayout({
       )}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <main>
+            <SiteNav />
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   )

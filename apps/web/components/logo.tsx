@@ -1,0 +1,31 @@
+type LogoProps = React.SVGProps<SVGSVGElement>
+
+function LogoMark({
+  markFill,
+  ...props
+}: LogoProps & { markFill: "#000000" | "#ffffff" }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="36 36 288 288" {...props}>
+      <path
+        d="M 180 120 L 180 90 L 180 60 L 150 60 L 120 60 L 90 60 L 60 60 L 60 90 L 60 120 L 60 150 L 60 180 L 60 210 L 60 240 L 60 270 L 60 300 L 90 300 L 120 300 L 150 300 L 180 300 L 180 270 L 180 240 L 150 240 L 120 240 L 120 210 L 120 180 L 120 150 L 120 120 L 150 120 Z"
+        fill={markFill}
+        fillRule="evenodd"
+        stroke="none"
+      />
+      <path
+        d="M 180 240 L 180 270 L 180 300 L 210 300 L 240 300 L 270 300 L 300 300 L 300 270 L 300 240 L 300 210 L 300 180 L 300 150 L 300 120 L 300 90 L 300 60 L 270 60 L 240 60 L 240 90 L 240 120 L 240 150 L 240 180 L 240 210 L 240 240 L 210 240 Z"
+        fill={markFill}
+        fillRule="evenodd"
+        stroke="none"
+      />
+    </svg>
+  )
+}
+
+export function LogoDark(props: React.SVGProps<SVGSVGElement>) {
+  return <LogoMark markFill="#ffffff" {...props} />
+}
+
+export function LogoLight(props: React.SVGProps<SVGSVGElement>) {
+  return <LogoMark markFill="#000000" {...props} />
+}
