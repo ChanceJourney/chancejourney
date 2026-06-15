@@ -28,7 +28,12 @@ export function SiteNav() {
 
   useEffect(() => {
     const updateScrollState = () => {
-      const nextIsScrolled = window.scrollY > 2
+      const firstSection = document.querySelector<HTMLElement>(
+        "[data-home-section='hero']"
+      )
+      const nextIsScrolled = firstSection
+        ? firstSection.getBoundingClientRect().bottom <= 0
+        : window.scrollY > 2
 
       setIsScrolled((currentIsScrolled) =>
         currentIsScrolled === nextIsScrolled
@@ -39,9 +44,11 @@ export function SiteNav() {
 
     updateScrollState()
     window.addEventListener("scroll", updateScrollState, { passive: true })
+    window.addEventListener("resize", updateScrollState)
 
     return () => {
       window.removeEventListener("scroll", updateScrollState)
+      window.removeEventListener("resize", updateScrollState)
     }
   }, [])
 
