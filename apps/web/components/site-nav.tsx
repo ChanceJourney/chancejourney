@@ -53,8 +53,10 @@ export function SiteNav() {
   }, [])
 
   const sideControlClass = cn(
-    "pointer-events-auto absolute z-20 flex size-8 items-center justify-center rounded-full transition-[top,background-color,box-shadow,backdrop-filter,color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] outline-none focus-visible:ring-3 focus-visible:ring-ring/30 sm:size-9",
-    isScrolled ? "top-2 shadow-none" : "top-4"
+    "pointer-events-auto absolute z-20 flex items-center justify-center rounded-full transition-[top,width,height,background-color,box-shadow,backdrop-filter,color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] outline-none focus-visible:ring-3 focus-visible:ring-ring/30",
+    isScrolled
+      ? "top-0 size-12 shadow-none sm:size-[3.25rem]"
+      : "top-4 size-10 sm:size-11"
   )
 
   return (
@@ -90,8 +92,8 @@ export function SiteNav() {
           className={cn(
             "pointer-events-auto relative z-10 scrollbar-none overflow-x-auto backdrop-blur-xl transition-[width,max-width,border-radius,background-color,padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none [&::-webkit-scrollbar]:hidden",
             isScrolled
-              ? "w-full max-w-none rounded-none bg-transparent px-14 py-2 sm:px-16"
-              : "w-[min(38rem,calc(100vw-6.5rem))] max-w-[calc(100vw-6.5rem)] rounded-full bg-foreground/10 px-1 py-1 sm:max-w-[calc(100vw-8rem)] sm:px-1.5"
+              ? "w-full max-w-none rounded-none bg-transparent px-[4.25rem] py-2 sm:px-20"
+              : "w-[min(38rem,calc(100vw-7.5rem))] max-w-[calc(100vw-7.5rem)] rounded-full bg-foreground/10 px-1 py-1 sm:max-w-[calc(100vw-9rem)] sm:px-1.5"
           )}
         >
           <NavigationMenu
@@ -123,6 +125,7 @@ export function SiteNav() {
             aria-label="Open account menu"
             className={cn(
               sideControlClass,
+              isScrolled && "top-2 size-8 sm:size-9",
               "right-3 bg-foreground/10 backdrop-blur-xl sm:right-6",
               isScrolled
                 ? "shadow-none"
